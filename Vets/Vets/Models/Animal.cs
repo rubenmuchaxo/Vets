@@ -23,7 +23,7 @@ namespace Vets.Models
 
         public string Photo { get; set; }
 
-        [ForeignKey(nameof(Owner)]
+        [ForeignKey(nameof(Owner))]
         public int OwnerFK { get; set; }
         public Owner Owner { get; set; }
 
