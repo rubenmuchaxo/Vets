@@ -22,8 +22,9 @@ namespace Vets.Models
         /// Owner's name
         /// </summary>
         [Required(ErrorMessage = "Este campo é obrigatório!")]
-        [StringLength(25, ErrorMessage = "O {0} não pode ter mais de 25 carateres")]
+        [StringLength(30, ErrorMessage = "O {0} não pode ter mais de {1} carateres")]
         [Display(Name = "Nome")]
+        [RegularExpression("[A-ZÁÉÍÓÚÂÔa-záéíóúàèìòùãõõñâêîôûäëïöüç -']+", ErrorMessage ="Só pode escrever letras no {0}")]
         public string Name { get; set; }
 
         /// <summary>
@@ -42,6 +43,12 @@ namespace Vets.Models
         [Display(Name = "Sexo")]
         [RegularExpression("[MmFf]",ErrorMessage ="O {0} apenas pode ser Masculino (M ou m) ou Feminino (F ou f).")]
         public string Sex { get; set; }
+
+        /// <summary>
+        /// Email
+        /// </summary>
+        [EmailAddress(ErrorMessage ="Insira um email válido.")]
+        public string email { get; set; }
 
         public ICollection<Animal> Animals { get; set; } //o dono tem uma lista de animais
     }
